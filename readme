@@ -5,3 +5,149 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+
+
+
+
+
+SecurityCofig.java
+
+
+
+
+// @Configuration
+// public class securityConfig {
+
+
+
+//     @Value("${superadmin.email}")
+//     private String superAdminEmail;
+
+//     @Value("${superadmin.password}")
+//     private String superAdminPassword;
+
+//     @Bean
+//     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+//         UserDetails superAdmin = User.builder()
+//                 .username(superAdminEmail)
+//                 .password(passwordEncoder.encode(superAdminPassword))
+//                 .roles("SUPER_ADMIN")
+//                 .build();
+//         return new InMemoryUserDetailsManager(superAdmin);
+//     }
+
+//     @Bean
+//     public PasswordEncoder passwordEncoder() {
+//         return new BCryptPasswordEncoder();
+//     }
+
+    // @Bean
+    // public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    //     http
+    //             .csrf(csrf -> csrf.disable())
+    //             .authorizeHttpRequests(requests -> requests
+    //                     .requestMatchers("/admin").hasRole("SUPER_ADMIN")
+    //                     .anyRequest().permitAll()
+    //                     .and()
+    //                     .httpBasic()); // simple Basic Auth for testing
+    //     return http.build();
+    // }
+
+    // public SecurityFilterChain securityConfig(HttpSecurity http) throws Exception{
+
+    //     http.authorizeRequests(req->{
+    //         req.requestMatchers("/admin").hasRole("SUPER_ADMIN")
+    //         .permitAll()
+    //         .anyRequest()
+    //         .authenticated();
+
+    //     });;
+    //     return http.build();
+    // }
+
+
+
+
+//     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { 
+//         http 
+//         .csrf(csrf -> csrf.disable()) 
+//         .authorizeRequests(auth -> 
+//             auth .antMatchers("/admin/**").hasRole("SUPER_ADMIN") 
+//             .anyRequest()
+//             .authenticated() ) 
+//             .httpBasic();
+// return http.build(); 
+// } 
+
+// }
+
+
+//     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//         http
+// .cors()
+// and
+//             .csrf(csrf -> csrf.disable())
+//             .authorizeRequests(auth -> auth
+//                 .antMatchers("/admin/**").hasRole("SUPER_ADMIN")
+//                 .anyRequest().authenticated()
+//             )
+//             .httpBasic();
+//         return http.build();
+//     }
+// }
+
+// @Bean
+// public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//     http
+//         .cors() 
+//         .and()
+//         .csrf(csrf -> csrf.disable())
+//         .authorizeRequests(auth -> auth
+//             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // 
+//             .antMatchers("/admin/**").hasRole("SUPER_ADMIN")
+//             .anyRequest().authenticated()
+//         )
+//         .httpBasic();
+
+//     return http.build();
+// .exceptionHandling(ex -> ex
+//     .authenticationEntryPoint((req, res, ex1) -> {
+//         try {
+//             res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+//         } catch (IOException e) {
+//             throw new RuntimeException(e);
+//         }
+//     })
+//     .accessDeniedHandler((req, res, ex2) -> {
+//         try {
+//             res.sendError(HttpServletResponse.SC_FORBIDDEN, "Forbidden");
+//         } catch (IOException e) {
+//             throw new RuntimeException(e);
+//         }
+//     })
+// )
+
+//     return http.build();
+//}
+
+
+
+
+//     @Bean
+//     public CorsConfigurationSource corsConfigurationSource() {
+//         CorsConfiguration config = new CorsConfiguration();
+
+//         config.setAllowedOrigins(List.of("http://localhost:3000"));
+//         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//         config.setAllowedHeaders(List.of("*"));
+//         config.setAllowCredentials(true);
+
+//         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//         source.registerCorsConfiguration("/**", config);
+
+//         return source;
+//     }
+
+// }
+
+
